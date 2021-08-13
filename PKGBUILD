@@ -27,13 +27,4 @@ build() {
 package() {
            cd ${srcdir}/${pkgname}-${pkgver}/build
            make DESTDIR=${pkgdir} install
-           # make the config
-           sudo mkdir -p "$pkgdir/etc/calamares"
-           # copy the settings.conf for calamares
-           sudo wget -q https://raw.githubusercontent.com/Hep-OS/Calamares-config/master/calamares/settings.conf -P "$pkgdir/etc/calamares"
-           # unconventional cd to /tmp in PKGBUILD
-           cd /tmp
-           git clone --depth=1 https://github.com/Hep-OS/Calamares-config
-           cd Calamares-config/calamares/modules
-           sudo mv * "$pkgdir/etc/calamares/modules/"
 }
